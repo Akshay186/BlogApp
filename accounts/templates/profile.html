@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load filters %}
+{% load static %}
+
+{% block title %}
+{{ profile.user.first_name }} {{ profile.user.last_name }} Profile
+{% endblock %}
+
+
+{% block content %}
+<h1>
+{{user.profile.bio}}
+</h1>
+Edit the profile template in accounts app for this page.
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Post
+{% endblock %}
+
+{% block content %}
+
+<h1>Edit Post</h1>
+{% if user.is_authenticated and user == post.author%}
+    <div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+        {{form.media}}
+        {{form.as_p}}
+        <button class="btn btn-primary">Update</button>
+    </form>
+    </div>
+{% else %}
+    <h4>You are not allowed to edit blog post unless you are author of the post.</h4>
+{% endif %}
+
+{% endblock %}

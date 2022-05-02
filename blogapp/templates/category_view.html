@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{category}} Posts</h1>
+
+{% if category_posts%}
+    <ul>
+    {% for post in category_posts %}
+        <li><a href="{% url 'article-detail' post.pk %}"> {{post.title}} </a> -
+            {{post.author.first_name}} {{post.author.last_name}} -
+            {{post.date}}
+            <!--<small><a href="{% url 'edit-article' post.pk %}">(Edit)</a> </small>-->
+            <!--<small><a href="{% url 'delete-article' post.pk %}">(Delete)</a> </small>-->
+            </br>
+
+        {{post.body|slice:":250"|safe}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <h4>Sorry, this page does not exit. :(  </h4>
+{% endif%}
+
+{% endblock %}
